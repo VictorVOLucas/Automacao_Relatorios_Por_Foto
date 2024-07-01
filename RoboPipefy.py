@@ -130,13 +130,13 @@ class RoboPipefy:
         try:
             consulta = "/pipes/790423/reports_v2/300276569"
             RoboPipefy.abrir_navegador_e_pesquisar(consulta)
-            email_pipefy = ('victor.vinicius@supper.com.br')  # Certifique-se de configurar essa variável de ambiente
-            senha_pipefy = ('Coxinha110103')  # Certifique-se de configurar essa variável de ambiente
+            email_pipefy = ('Seu Usuario Aqui')  # Certifique-se de configurar essa variável de ambiente
+            senha_pipefy = ('Sua Senha aqui')  # Certifique-se de configurar essa variável de ambiente
             RoboPipefy.login_pipefy(email_pipefy, senha_pipefy)
             RoboPipefy.exportar_relatorio()
             pasta_downloads = os.path.join(os.path.expanduser('~'), 'Downloads')
             nome_base_arquivo = 'sequenciamento_'
-            pasta_destino = r'C:\Users\victor.vinicius\Desktop\Automacao\Testes\sequenciamentoPipefy'
+            pasta_destino = r'Seu Caminho Aqui'
             RoboPipefy.mover_arquivo_com_data(nome_base_arquivo, pasta_downloads, pasta_destino)
             RoboPipefy.logoff_pipefy()
         except Exception as e:
