@@ -1,0 +1,57 @@
+2024-07-01 11:06:35 - Agendamento iniciado.
+2024-07-01 11:07:00 - Iniciando o sistema...
+O software C:\Program Files (x86)\GraphOn\GO-Global\Client\gg-client.exe foi aberto com sucesso com os argumentos fornecidos: ['-c -h erpcloud.korp.com.br -mm 1 -u SUPPER_15 -p p#&jHPF8yvJ -a SUPPER -ac all']
+2024-07-01 11:07:26 - Campo 'Usuário' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:07:28 - Campo 'Senha' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:07:30 - Botão 'Entrar' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:07:41 - Palavra 'Relatórios' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:07:46 - Palavra 'Cubo de decisão' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:07:51 - Icone 'Estoque Supper' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:07:56 - Icone 'Seta Modelos' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:02 - Icone 'Seta Lista' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:07 - Modelo de Relatório, caminho imagem lista encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:12 - Icone 'Exportar Excel' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:27 - Icone 'Area de Trabalho' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:32 - Icone 'Este Computador Pesquisa' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:40 - Elemento 'Nome do Documento' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:44 - Icone 'Botão Salvar' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:08:49 - Botão 'Não/Ok' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:00 - Icone 'Faturamento Peso' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:05 - Campo 'Data Inicial' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:07 - Campo 'Data Final' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:10 - Botão 'Ok' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:15 - Icone 'Seta Modelos' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:20 - Icone 'Seta Lista' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:25 - Modelo de Relatório, caminho imagem lista encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:31 - Icone 'Exportar Excel' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:46 - Icone 'Area de Trabalho' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:51 - Icone 'Este Computador Pesquisa' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:09:58 - Elemento 'Nome do Documento' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:03 - Icone 'Botão Salvar' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:08 - Botão 'Não/Ok' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:13 - Icone 'Pedido Compra' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:18 - Icone 'Seta Modelos' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:24 - Icone 'Seta Lista' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:29 - Modelo de Relatório, caminho imagem lista encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:34 - Icone 'Exportar Excel' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:39 - Icone 'Este Computador' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:45 - Icone 'Este Computador Pesquisa' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:52 - Elemento 'Nome do Documento' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:10:56 - Icone 'Botão Salvar' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:02 - Botão 'Não/Ok' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:12 - Icone 'Mov. Saída ODF' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:17 - Campo 'Data Inicial' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:20 - Campo 'Data Final' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:22 - Botão 'Ok' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:27 - Icone 'Seta Modelos' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:32 - Icone 'Seta Lista' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:38 - Modelo de Relatório, caminho imagem lista encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:43 - Botão 'Desc_Prod' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:45 - Primeira Coluna encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:11:50 - Ocorreu um erro ao clicar em Botão 'Expand All Notes': 
+2024-07-01 11:11:50 - Ocorreu um erro ao clicar em Botão 'Expand All Notes': 
+2024-07-01 11:11:51 - Ocorreu um erro ao clicar em Botão 'Expand All Notes': 
+Ocorreu um erro ao expandir todas as notas: 
+2024-07-01 11:11:53 - Ocorreu um erro ao gerar o relatório de Movimento Saida de ODF: 
+2024-07-01 11:11:53 - Ocorreu um erro no main(): 
+

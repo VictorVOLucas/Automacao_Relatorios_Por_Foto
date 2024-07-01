@@ -1,0 +1,10 @@
+2024-07-01 15:46:03 - Agendamento iniciado.
+2024-07-01 15:47:00 - Iniciando o sistema...
+O software C:\Program Files (x86)\GraphOn\GO-Global\Client\gg-client.exe foi aberto com sucesso com os argumentos fornecidos: ['-c -h erpcloud.korp.com.br -mm 1 -u SUPPER_15 -p p#&jHPF8yvJ -a SUPPER -ac all']
+2024-07-01 15:47:25 - Realizando Login...
+2024-07-01 15:47:25 - Ocorreu um erro ao clicar em Campo 'Usuário': 
+2024-07-01 15:47:26 - Ocorreu um erro ao clicar em Campo 'Usuário': 
+2024-07-01 15:47:26 - Ocorreu um erro ao clicar em Campo 'Usuário': 
+2024-07-01 15:47:28 - Ocorreu um erro ao realizar login: 
+2024-07-01 15:47:28 - Ocorreu um erro no main(): 
+

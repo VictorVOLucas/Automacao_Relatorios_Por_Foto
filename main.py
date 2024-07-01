@@ -9,14 +9,15 @@ from RoboV4 import RoboV4  # Importa funcionalidades específicas de RoboV4
 from utils import Utils  # Importa utilitários
 from RoboPipefy import RoboPipefy  # Importa funcionalidades específicas de RoboPipefy
 import os  # Módulo para interagir com o sistema operacional
-import sys
-from threading import Thread
+import sys  # Módulo para interagir com o interpretador Python
+import telegram  # Biblioteca para interagir com a API do Telegram
+from Enviar_Log import EnviarLogs  # Importa a classe EnviarLogs do arquivo Logs.py
 
 class MainApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Sistema de Extração de Relatórios")  # Define o título da janela principal
-        self.root.geometry("500x700")  # Define o tamanho da janela
+        self.root.geometry("850x700")  # Define o tamanho da janela
 
         self.create_widgets()  # Cria os widgets da interface
 
@@ -38,7 +39,7 @@ class MainApp:
         tk.Label(self.tab_inicio, text="Horários para extração de relatórios (HH:MM)").pack(pady=5)  # Rótulo de instrução
 
         self.time_entries = []  # Lista para armazenar os campos de entrada de horários
-        for i in range(3):  # Cria três campos de entrada para horários
+        for i in range(4):  # Cria quatro campos de entrada para horários
             entry = tk.Entry(self.tab_inicio)
             entry.pack(pady=5)
             self.time_entries.append(entry)
@@ -115,25 +116,41 @@ class MainApp:
         try:
             self.log("Iniciando o sistema...")
             RoboV4.abrir_software()  # Abre o software RoboV4
+            self.log("Realizando Login...")
             RoboV4.realizar_login()  # Realiza o login
 
             #Sequência de chamadas para extrair diferentes relatórios
+            self.log("Abrindo Cubo de Decisão...")
             RoboV4.abrir_cubo_de_decisao()
+            self.log("Retirando Relatorio Estoque SUPPER...")
             RoboV4.relatorio_estoque_supper()
+            self.log("Retirando Relatorio Faturamento Peso...")
             RoboV4.relatorio_faturamento_peso()
+            self.log("Retirando Relatorio Pedido Compra...")
             RoboV4.relatorio_pedido_compra()
+            self.log("Retirando Relatorio Movimento de Saida de ODF...")
             RoboV4.relatorio_Mov_Saida_ODF()
+
             if datetime.now().weekday() == 0:  # Se for segunda-feira
                 self.log("Iniciando extração dos Parametros...")
                 RoboV4.abrir_Parametros()  # Extrai parâmetros específicos
-            RoboV4.abrir_mrp()
-            
-            RoboV4.fechar_sistema()
-            RoboPipefy.main()
+            else:
+                self.log("Não é segunda-feira, não serão extraídos os parâmetros...")
 
+            self.log("Retirando Relatorio MRP...")
+            RoboV4.abrir_mrp()
             self.log("Relatórios extraídos com sucesso.")  # Loga a mensagem de sucesso
+
+            self.log("Fechando o Sistema...")
+            RoboV4.fechar_sistema()  # Certifica-se de que o sistema será fechado
+
+            self.log("Abrindo Pipefy e Retirando o Relatorio...")
+            RoboPipefy.main()
         except Exception as e:
-            self.log(f"Ocorreu um erro ao extrair os relatórios: {e}")  # Loga qualquer erro ocorrido durante a extração
+            self.log(f"Ocorreu um erro no main(): {e}")
+            self.salvar_log_em_arquivo()  # Salva o log em um arquivo
+            EnviarLogs.enviar_logs()  # Envia o log para o Telegram
+   
 
     def log(self, message):
         self.log_text.insert(tk.END, f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {message}\n")  # Adiciona mensagem ao log
@@ -150,6 +167,17 @@ class MainApp:
         self.root.destroy()  # Fecha a janela
         os._exit(0)  # Força a saída do processo
 
+    def salvar_log_em_arquivo(self):
+        log_content = self.log_text.get("1.0", tk.END)
+        folder_path = "Logs"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        filename = f"{folder_path}/error_log_{datetime.now().strftime('%Y_%m_%d_%H_%M')}.txt"
+        with open(filename, "w") as file:
+            file.write(log_content)
+        self.log(f"Log salvo em {filename}")  # Loga o nome do arquivo salvo
+        return filename
+
 class StdoutRedirector:
     def __init__(self, text_widget):
         self.text_space = text_widget
@@ -165,6 +193,7 @@ class StdoutRedirector:
 
     def flush(self):
         pass
+
 
 if __name__ == "__main__":
     root = tk.Tk()

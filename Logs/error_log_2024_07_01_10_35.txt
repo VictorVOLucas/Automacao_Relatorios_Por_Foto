@@ -1,0 +1,23 @@
+2024-07-01 10:33:57 - Agendamento iniciado.
+2024-07-01 10:34:00 - Iniciando o sistema...
+O software C:\Program Files (x86)\GraphOn\GO-Global\Client\gg-client.exe foi aberto com sucesso com os argumentos fornecidos: ['-c -h erpcloud.korp.com.br -mm 1 -u SUPPER_15 -p p#&jHPF8yvJ -a SUPPER -ac all']
+2024-07-01 10:34:15 - Campo 'Usuário' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:17 - Campo 'Senha' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:20 - Botão 'Entrar' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:30 - Palavra 'Relatórios' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:35 - Palavra 'Cubo de decisão' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:40 - Icone 'Estoque Supper' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:46 - Icone 'Seta Modelos' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:51 - Icone 'Seta Lista' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:34:56 - Modelo de Relatório, caminho imagem lista encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:35:01 - Icone 'Exportar Excel' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 10:35:06 - Ocorreu um erro ao clicar em Icone 'Este Computador': 
+2024-07-01 10:35:06 - Ocorreu um erro ao clicar em Icone 'Este Computador': 
+2024-07-01 10:35:07 - Ocorreu um erro ao clicar em Icone 'Este Computador': 
+2024-07-01 10:35:09 - Ocorreu um erro ao salvar o arquivo: 
+2024-07-01 10:35:14 - Ocorreu um erro ao clicar em Icone 'Faturamento Peso': 
+2024-07-01 10:35:14 - Ocorreu um erro ao clicar em Icone 'Faturamento Peso': 
+2024-07-01 10:35:14 - Ocorreu um erro ao clicar em Icone 'Faturamento Peso': 
+2024-07-01 10:35:16 - Ocorreu um erro ao gerar o relatório de Faturamento Peso: 
+2024-07-01 10:35:16 - Ocorreu um erro no main(): 
+

@@ -1,0 +1,12 @@
+2024-07-01 11:03:59 - Agendamento iniciado.
+2024-07-01 11:04:00 - Iniciando o sistema...
+O software C:\Program Files (x86)\GraphOn\GO-Global\Client\gg-client.exe foi aberto com sucesso com os argumentos fornecidos: ['-c -h erpcloud.korp.com.br -mm 1 -u SUPPER_15 -p p#&jHPF8yvJ -a SUPPER -ac all']
+2024-07-01 11:04:25 - Campo 'Usuário' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:04:28 - Campo 'Senha' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:04:30 - Botão 'Entrar' encontrado(a) e clicado(a) com sucesso.
+2024-07-01 11:04:40 - Ocorreu um erro ao clicar em Palavra 'Relatórios': 
+2024-07-01 11:04:40 - Ocorreu um erro ao clicar em Palavra 'Relatórios': 
+2024-07-01 11:04:40 - Ocorreu um erro ao clicar em Palavra 'Relatórios': 
+2024-07-01 11:04:42 - Ocorreu um erro ao abrir o Cubo de Decisão: 
+2024-07-01 11:04:42 - Ocorreu um erro no main(): 
+
