@@ -95,11 +95,11 @@ class RoboV4:
     def realizar_login():
         try:
             Utils.clicar_elemento('img/Logar_Sistema/Usuario.png', "Campo 'Usuário'")
-            pyautogui.write('BOT_Relatorio_Supper')
+            pyautogui.write('Usuario sistema aqui')
             time.sleep(2)  # Ajuste conforme necessário
 
             Utils.clicar_elemento('img/Logar_Sistema/Senha.png', "Campo 'Senha'")
-            pyautogui.write('210624')
+            pyautogui.write('Senha sistema aqui')
             time.sleep(2)  # Ajuste conforme necessário
 
             Utils.clicar_elemento('img/Logar_Sistema/BotaoEntrar.png', "Botão 'Entrar'")
