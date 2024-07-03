@@ -9,11 +9,14 @@ from datetime import datetime
 
 class RoboV4:
 
+    USUARIO_BOT = 'BOT_Relatorio_Supper'
+    SENHA_BOT = '210624'
+
     now = datetime.now()
 
     nomeArquivo_EstoqueSupper = 'EstoqueSupper'
     nomeArquivo_FaturamentoPeso = 'FaturamentoPeso'
-    nomeArquivo_PedidoCompra = 'PedidoCompra'+now.strftime('%Y-%m')
+    nomeArquivo_PedidoCompra = 'PedidoCompra'
     nomeArquivo_Req_Almoxarifado = 'Req_Almoxarifado'
     nomeArquivo_Mov_Saida_ODF = 'Mov_Saida_ODF'+now.strftime('%Y-%m')
     nomeArquivo_MRP_Filial_2 = 'CarteiraProducao_Filial_2'
@@ -56,7 +59,7 @@ class RoboV4:
 
         # Validar se o caminho informado é válido
         if not os.path.exists(software_path):
-            messagebox.showerror("Erro", "O caminho especificado não é válido.")
+            messagebox.showerror("Erro", "O caminho especificado não é válido, informe um caminho onde esta localizado o software e os parametros para abri-lo.")
             return
 
         # Salvar o caminho e os argumentos em um arquivo de texto
@@ -66,8 +69,9 @@ class RoboV4:
                 f.write(arguments)
             messagebox.showinfo("Sucesso", "Caminho do software e argumentos salvos com sucesso.")
         except Exception as e:
-            messagebox.showerror("Erro", f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Erro ao salvar as configurações: {str(e)}")
-
+            messagebox.showerror("Erro", f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Erro ao salvar as configurações do Caminho do software e Argumentos: {str(e)}")
+            raise
+    
     @staticmethod
     def abrir_software():
         # Ler o caminho e os argumentos do arquivo de texto
@@ -85,21 +89,22 @@ class RoboV4:
             full_arguments = [software_path] + arguments
 
             subprocess.Popen(full_arguments, creationflags=subprocess.CREATE_NO_WINDOW)
-            print(f"O software {software_path} foi aberto com sucesso com os argumentos fornecidos: {arguments}")
+            print(f"O software foi aberto com sucesso ! Caminho so Software:{software_path} \n Argumentos:{arguments}")
             time.sleep(25)  # Aguardar o software abrir completamente
         except Exception as e:
             print(f"Ocorreu um erro ao abrir o software: {e}")
             messagebox.showerror("Erro", f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao abrir o software: {e}")
-
+            raise
+        
     @staticmethod
     def realizar_login():
         try:
-            Utils.clicar_elemento('img/Logar_Sistema/Usuario.png', "Campo 'Usuário'")
-            pyautogui.write('Usuario sistema aqui')
-            time.sleep(2)  # Ajuste conforme necessário
+            # Utils.clicar_elemento('img/Logar_Sistema/Usuario.png', "Campo 'Usuário'")
+            # pyautogui.write('BOT_Relatorio_Supper')
+            # time.sleep(2)  # Ajuste conforme necessário
 
             Utils.clicar_elemento('img/Logar_Sistema/Senha.png', "Campo 'Senha'")
-            pyautogui.write('Senha sistema aqui')
+            pyautogui.write(RoboV4.SENHA_BOT)
             time.sleep(2)  # Ajuste conforme necessário
 
             Utils.clicar_elemento('img/Logar_Sistema/BotaoEntrar.png', "Botão 'Entrar'")
@@ -112,10 +117,10 @@ class RoboV4:
     @staticmethod
     def abrir_cubo_de_decisao():
         try:
-            Utils.clicar_elemento('img/Menu_Relatorio/Relatorios.png', "Palavra 'Relatórios'")
+            Utils.clicar_elemento('img/Menu_Relatorio/Relatorios.png', "Menu 'Relatórios'")
             time.sleep(5)  # Ajuste conforme necessário
             
-            Utils.clicar_elemento('img/Menu_Relatorio/Cubo.png', "Palavra 'Cubo de decisão'")
+            Utils.clicar_elemento('img/Menu_Relatorio/Cubo.png', "Submenu 'Cubo de decisão'")
             time.sleep(5)  # Ajuste conforme necessário
         except Exception as e:
             print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao abrir o Cubo de Decisão: {e}")
@@ -124,7 +129,7 @@ class RoboV4:
     @staticmethod
     def relatorio_faturamento_peso():
         try:
-            Utils.clicar_elemento('img/Rel_FaturamentoPeso/FaturamentoPeso.png', "Icone 'Faturamento Peso'")
+            Utils.clicar_elemento('img/Rel_FaturamentoPeso/FaturamentoPeso.png', "Campo 'Faturamento Peso'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.aplicar_data_mes_atual('img/Rel_FaturamentoPeso/DataInicial.png', 'img/Rel_FaturamentoPeso/DataFinal.png')
@@ -138,7 +143,7 @@ class RoboV4:
     @staticmethod
     def relatorio_estoque_supper():
         try:
-            Utils.clicar_elemento('img/Rel_EstoqueSupper/EstoqueSupper.png', "Icone 'Estoque Supper'")
+            Utils.clicar_elemento('img/Rel_EstoqueSupper/EstoqueSupper.png', "Campo 'Estoque Supper'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.apicar_modelo_de_relatorio('img/Rel_EstoqueSupper/EstoqueSupper_Lista.png')
@@ -152,11 +157,12 @@ class RoboV4:
     @staticmethod
     def relatorio_pedido_compra():
         try:
-            Utils.clicar_elemento('img/Rel_PedidoCompra/PedidoCompra.png', "Icone 'Pedido Compra'")
+            Utils.clicar_elemento('img/Rel_PedidoCompra/PedidoCompra.png', "Campo 'Pedido Compra'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.apicar_modelo_de_relatorio('img/Rel_PedidoCompra/PedidoCompra_Lista.png')
-            Utils.salvar_arquivo_pedido_compra(RoboV4.nomeArquivo_PedidoCompra)
+            Utils.salvar_arquivo(RoboV4.nomeArquivo_PedidoCompra)
+            # Utils.salvar_arquivo_pedido_compra(RoboV4.nomeArquivo_PedidoCompra)
             time.sleep(5)  # Ajuste conforme necessário
 
         except Exception as e:
@@ -166,10 +172,10 @@ class RoboV4:
     @staticmethod
     def abrir_mrp():
         try:
-            Utils.clicar_elemento('img/Menu_Logistica/Logistica.png', "Palavra 'Logística'")
+            Utils.clicar_elemento('img/Menu_Logistica/Logistica.png', "Menu 'Logística'")
             time.sleep(5)  # Ajuste conforme necessário
             
-            Utils.clicar_elemento('img/Menu_Logistica/MRP.png', "Palavra 'MRP'")
+            Utils.clicar_elemento('img/Menu_Logistica/MRP.png', "Submenu 'MRP'")
             time.sleep(10)  # Ajuste conforme necessário
 
 
@@ -180,21 +186,21 @@ class RoboV4:
 
             RoboV4.relatorio_mrp(RoboV4.nomeArquivo_MRP_Filial_2)
 
-            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Seta.png', "Botão 'Seta'")
+            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Seta.png', "Botão 'Seta trocar empresa'")
             time.sleep(3)  # Ajuste conforme necessário
-            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/JMS_1.png', "Botão 'JMS 1'")
+            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/JMS_1.png', "Botão 'Empresa JMS 1'")
             time.sleep(10)  # Ajuste conforme necessário
 
             RoboV4.relatorio_mrp(RoboV4.nomeArquivo_MRP_JMS_1)
 
-            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Seta.png', "Botão 'Seta'")
+            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Seta.png', "Botão 'Seta trocar empresa'")
             time.sleep(3)  # Ajuste conforme necessário
-            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/JM_3.png', "Botão 'JM 3'")
+            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/JM_3.png', "Botão 'Empresa JM 3'")
             time.sleep(10)  # Ajuste conforme necessário
 
             RoboV4.relatorio_mrp(RoboV4.nomeArquivo_MRP_JM_3)
 
-            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Seta.png', "Botão 'Seta'")
+            Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Seta.png', "Botão 'Seta trocar empresa'")
             time.sleep(3)  # Ajuste conforme necessário
             Utils.clicar_elemento('img/Rel_MRP/Trocar_Empresa/Supper_Filial_2.png', "Botão 'Empresa Supper Filial 2'")
             time.sleep(3)  # Ajuste conforme necessário
@@ -216,7 +222,7 @@ class RoboV4:
     @staticmethod
     def relatorio_Req_Almoxarifado():
         try:
-            Utils.clicar_elemento('img/Rel_Req_Almoxarifado/Req_Almoxarifado.png', "Icone 'Req. Almoxarifado'")
+            Utils.clicar_elemento('img/Rel_Req_Almoxarifado/Req_Almoxarifado.png', "Campo 'Req. Almoxarifado'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.apicar_modelo_de_relatorio('img/Rel_Req_Almoxarifado/Req_Almoxarifado_Lista.png')
@@ -234,7 +240,7 @@ class RoboV4:
     @staticmethod
     def relatorio_Mov_Saida_ODF():
         try:
-            Utils.clicar_elemento('img/Rel_Mov_Saida_ODF/Mov_Saida_ODF.png', "Icone 'Mov. Saída ODF'")
+            Utils.clicar_elemento('img/Rel_Mov_Saida_ODF/Mov_Saida_ODF.png', "Campo 'Mov. Saída ODF'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.aplicar_data_mes_atual('img/Rel_FaturamentoPeso/DataInicial.png', 'img/Rel_FaturamentoPeso/DataFinal.png')
@@ -245,7 +251,7 @@ class RoboV4:
             time.sleep(2)
             Utils.expand_All_Notes('img/Rel_Mov_Saida_ODF/Expand_Notes/Cod_Prod.png')
 
-            Utils.salvar_arquivo_pedido_compra(RoboV4.nomeArquivo_Mov_Saida_ODF)
+            Utils.salvar_arquivo_mov_saida_odf(RoboV4.nomeArquivo_Mov_Saida_ODF)
             time.sleep(5)
 
         except Exception as e:
@@ -255,10 +261,10 @@ class RoboV4:
     @staticmethod
     def abrir_Parametros():
         try:
-            Utils.clicar_elemento('img/Menu_Configuracoes/Configuracoes.png', "Palavra 'Configurações'")
+            Utils.clicar_elemento('img/Menu_Configuracoes/Configuracoes.png', "Menu 'Configurações'")
             time.sleep(5)  # Ajuste conforme necessário
 
-            Utils.clicar_elemento('img/Menu_Configuracoes/Parametros.png', "Palavra 'Parâmetros'")
+            Utils.clicar_elemento('img/Menu_Configuracoes/Parametros.png', "Submenu 'Parâmetros'")
             time.sleep(5)  # Ajuste conforme necessário
 
             RoboV4.relatorio_Parametros()
@@ -270,16 +276,16 @@ class RoboV4:
     def relatorio_Parametros():
         try:
 
-            Utils.clicar_elemento('img/Rel_Parametros/Filtro.png', "Botão 'Filtro'")
+            Utils.clicar_elemento('img/Rel_Parametros/Filtro.png', "Icone 'Filtro'")
             time.sleep(5)  # Ajuste conforme necessário
 
-            Utils.clicar_elemento('img/Rel_Parametros/Excel.png', "Botão 'Excel'")
+            Utils.clicar_elemento('img/Rel_Parametros/Excel.png', "Icone 'Excel'")
             time.sleep(5)  # Ajuste conforme necessário
 
-            Utils.clicar_elemento('img/Rel_Parametros/BotaoOK.png', "Botão 'Excel'")
+            Utils.clicar_elemento('img/Rel_Parametros/BotaoOK.png', "Icone 'Excel'")
             time.sleep(5)  # Ajuste conforme necessário
 
-            Utils.clicar_elemento('img/Rel_Parametros/SetaDupla.png', "Botão 'OK'")
+            Utils.clicar_elemento('img/Rel_Parametros/SetaDupla.png', "Icone 'OK'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.salvar_arquivo_parametros(RoboV4.nomeArquivo_Parametros, 'img/Rel_Parametros/Excel.png')

@@ -7,10 +7,10 @@ from threading import Thread  # Biblioteca para threads (execução paralela)
 from datetime import datetime  # Biblioteca para manipulação de datas e horários
 from RoboV4 import RoboV4  # Importa funcionalidades específicas de RoboV4
 from utils import Utils  # Importa utilitários
-from RoboPipefy import RoboPipefy  # Importa funcionalidades específicas de RoboPipefy
+#from RoboPipefy import RoboPipefy  # Importa funcionalidades específicas de RoboPipefy
 import os  # Módulo para interagir com o sistema operacional
 import sys  # Módulo para interagir com o interpretador Python
-import telegram  # Biblioteca para interagir com a API do Telegram
+#import telegram  # Biblioteca para interagir com a API do Telegram
 from Enviar_Log import EnviarLogs  # Importa a classe EnviarLogs do arquivo Logs.py
 
 class MainApp:
@@ -144,14 +144,13 @@ class MainApp:
             self.log("Fechando o Sistema...")
             RoboV4.fechar_sistema()  # Certifica-se de que o sistema será fechado
 
-            self.log("Abrindo Pipefy e Retirando o Relatorio...")
-            RoboPipefy.main()
+            #self.log("Abrindo Pipefy e Retirando o Relatorio...")
+            #RoboPipefy.main()
         except Exception as e:
-            self.log(f"Ocorreu um erro no main(): {e}")
+            self.log(f"Ocorreu um erro no main principal(): {e}")
             self.salvar_log_em_arquivo()  # Salva o log em um arquivo
             EnviarLogs.enviar_logs()  # Envia o log para o Telegram
    
-
     def log(self, message):
         self.log_text.insert(tk.END, f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - {message}\n")  # Adiciona mensagem ao log
         self.log_text.see(tk.END)  # Rola o log para a última linha

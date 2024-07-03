@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import calendar
 import tkinter as tk
 from tkinter import messagebox
-import sys
+#import sys
 
 class Utils:
 
@@ -75,6 +75,7 @@ class Utils:
             messagebox.showinfo("Sucesso", "Caminho do software, argumentos e relatorios salvos com sucesso.")
         except Exception as e:
             messagebox.showerror("Erro", f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Erro ao salvar as configurações: {str(e)}")
+            raise
 
     @staticmethod
     def clicar_elemento(imagem, descricao, tentativas=3, confidence=0.9):
@@ -98,10 +99,10 @@ class Utils:
     @staticmethod
     def apicar_modelo_de_relatorio(caminho_imagem_lista):
         try:
-            Utils.clicar_elemento('img/Modelo_Relatorio/SetaModelos.png', "Icone 'Seta Modelos'")
+            Utils.clicar_elemento('img/Modelo_Relatorio/SetaModelos.png', "Botão 'Seta Modelos'")
             time.sleep(5)  # Ajuste conforme necessário
             
-            Utils.clicar_elemento('img/Modelo_Relatorio/SetaLista.png', "Icone 'Seta Lista'")
+            Utils.clicar_elemento('img/Modelo_Relatorio/SetaLista.png', "Botão 'Seta Lista Modelos'")
             time.sleep(5)  # Ajuste conforme necessário
 
             Utils.clicar_elemento(caminho_imagem_lista, "Modelo de Relatório, caminho imagem lista")
@@ -120,7 +121,7 @@ class Utils:
 
             # Simulação de operações de salvar arquivo usando pyautogui (adapte conforme necessário)
             # pyautogui.click('img/Salvar_Arquivo/ExportarExcel.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/ExportarExcel.png', "Icone 'Exportar Excel'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/ExportarTXT.png', "Icone 'Exportar em TXT'")
             time.sleep(15)
             
             # pyautogui.click('img/Salvar_Arquivo/EsteComputador.png')
@@ -128,20 +129,20 @@ class Utils:
             time.sleep(5)
             
             # pyautogui.click('img/Salvar_Arquivo/EsteComputador_Pesquisa.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador Pesquisa'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Area de Trabalho - barra de Pesquisa'")
             time.sleep(2)
             pyautogui.write(caminho)
             pyautogui.press('enter')
             time.sleep(5)
 
             # pyautogui.click('img/Salvar_Arquivo/NomeDocumento.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Elemento 'Nome do Documento'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Campo 'Nome do Documento'")
             time.sleep(2)
             pyautogui.write(nome_arquivo)
             time.sleep(2)
 
             # pyautogui.click('img/Salvar_Arquivo/BotaoSalvar.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Icone 'Botão Salvar'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Botão 'Salvar'")
             time.sleep(5)
 
             # pyautogui.click('img/Salvar_Arquivo/NaoAbrirArquivo.png')
@@ -152,6 +153,7 @@ class Utils:
             messagebox.showerror("Erro", "Arquivo de configurações não encontrado.")
         except Exception as e:
             print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao salvar o arquivo: {e}")
+            raise
     
     @staticmethod
     def salvar_arquivo_mrp(nome_arquivo):
@@ -170,20 +172,20 @@ class Utils:
             time.sleep(5)
             
             # pyautogui.click('img/Salvar_Arquivo/EsteComputador_Pesquisa.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador Pesquisa'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador - Barra de Pesquisa'")
             time.sleep(2)
             pyautogui.write(caminho)
             pyautogui.press('enter')
             time.sleep(5)
 
             # pyautogui.click('img/Salvar_Arquivo/NomeDocumento.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Elemento 'Nome do Documento'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Campo 'Nome do Documento'")
             time.sleep(2)
             pyautogui.write(nome_arquivo)
             time.sleep(2)
 
             # pyautogui.click('img/Salvar_Arquivo/BotaoSalvar.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar_v2.png', "Icone 'Botão Salvar'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar_v2.png', "Botão 'Salvar'")
             time.sleep(15)
 
             # pyautogui.click('img/Salvar_Arquivo/NaoAbrirArquivo.png')
@@ -191,9 +193,10 @@ class Utils:
             time.sleep(5)
 
         except FileNotFoundError:
-            messagebox.showerror("Erro", "Arquivo de configurações não encontrado.")
+            messagebox.showerror("Erro", "Arquivo configurações_caminhos.txt não encontrado.")
         except Exception as e:
             print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao salvar o arquivo: {e}")
+            raise
 
     # # @staticmethod
     # # def procurar_imagem_alternativa(imagem_alternativa):
@@ -246,7 +249,7 @@ class Utils:
                 time.sleep(5)  # Ajuste conforme necessário
 
         except Exception as e:
-            print(f"Ocorreu um erro ao expandir todas as notas: {e}")
+            print(f"Ocorreu um erro ao expandir todas as colunas do cubo: {e}")
             raise
 
     @staticmethod
@@ -259,7 +262,7 @@ class Utils:
                     caminho_parametros = segunda_linha[1].strip() 
                 else:
                     # Caso o arquivo tenha menos de duas linhas
-                    print("O arquivo não tem pelo menos duas linhas.")
+                    print("O arquivo configuracoes_caminhos.txt não tem pelo menos duas linhas.")
 
             Utils.clicar_elemento(exportar_excel_img, "Icone 'Exportar Excel'")
             time.sleep(5)  # Ajuste conforme necessário
@@ -267,71 +270,71 @@ class Utils:
             Utils.clicar_elemento('img/Salvar_Arquivo/EsteComputador.png', "Icone 'Este Computador'")
             time.sleep(5)  # Ajuste conforme necessário
             
-            Utils.clicar_elemento('img/Salvar_Arquivo/EsteComputador_Pesquisa.png', "Icone 'Este Computador Pesquisa'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/EsteComputador_Pesquisa.png', "Icone 'Este Computador - Barra de Pesquisa'")
             time.sleep(2)  # Ajuste conforme necessário
             pyautogui.write(caminho_parametros)
             pyautogui.press('enter')
             time.sleep(5)  # Ajuste conforme necessário
 
-            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Elemento 'Nome do Documento'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Campo 'Nome do Documento'")
             time.sleep(2)  # Ajuste conforme necessário
 
             pyautogui.write(nome_arquivo)
             time.sleep(2)  # Ajuste conforme necessário
 
-            Utils.clicar_elemento('img/Salvar_Arquivo/SalvarParametros.png', "Icone 'Botão Salvar'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/SalvarParametros.png', "Botão 'Salvar'")
             time.sleep(5)  # Ajuste conforme necessário
         except Exception as e:
             print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao salvar o arquivo: {e}")
             raise
 
-    @staticmethod
-    def salvar_arquivo_pedido_compra(nome_arquivo):
+    # @staticmethod
+    # def salvar_arquivo_pedido_compra(nome_arquivo):
     
-        try:
-            # Ler o caminho do arquivo de configuração
-            with open('configuracoes_caminhos.txt', 'r') as f:
-                terceira_linha = f.readlines()
-                if len(terceira_linha) >= 3:
-                    caminho_pedido_compra = terceira_linha[2].strip() 
-                else:
-                    # Caso o arquivo tenha menos de duas linhas
-                    print("O arquivo não tem pelo menos tres linhas.")
+    #     try:
+    #         # Ler o caminho do arquivo de configuração
+    #         with open('configuracoes_caminhos.txt', 'r') as f:
+    #             terceira_linha = f.readlines()
+    #             if len(terceira_linha) >= 3:
+    #                 caminho_pedido_compra = terceira_linha[2].strip() 
+    #             else:
+    #                 # Caso o arquivo tenha menos de duas linhas
+    #                 print("O arquivo não tem pelo menos tres linhas.")
 
-            # Simulação de operações de salvar arquivo usando pyautogui (adapte conforme necessário)
-            # pyautogui.click('img/Salvar_Arquivo/ExportarExcel.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/ExportarExcel.png', "Icone 'Exportar Excel'")
-            time.sleep(5)
+    #         # Simulação de operações de salvar arquivo usando pyautogui (adapte conforme necessário)
+    #         # pyautogui.click('img/Salvar_Arquivo/ExportarExcel.png')
+    #         Utils.clicar_elemento('img/Salvar_Arquivo/ExportarExcel.png', "Icone 'Exportar Excel'")
+    #         time.sleep(5)
             
-            # pyautogui.click('img/Salvar_Arquivo/EsteComputador.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho.png', "Icone 'Este Computador'")
-            time.sleep(5)
+    #         # pyautogui.click('img/Salvar_Arquivo/EsteComputador.png')
+    #         Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho.png', "Icone 'Este Computador'")
+    #         time.sleep(5)
             
-            # pyautogui.click('img/Salvar_Arquivo/EsteComputador_Pesquisa.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador Pesquisa'")
-            time.sleep(2)
-            pyautogui.write(caminho_pedido_compra)
-            pyautogui.press('enter')
-            time.sleep(5)
+    #         # pyautogui.click('img/Salvar_Arquivo/EsteComputador_Pesquisa.png')
+    #         Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador Pesquisa'")
+    #         time.sleep(2)
+    #         pyautogui.write(caminho_pedido_compra)
+    #         pyautogui.press('enter')
+    #         time.sleep(5)
 
-            # pyautogui.click('img/Salvar_Arquivo/NomeDocumento.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Elemento 'Nome do Documento'")
-            time.sleep(2)
-            pyautogui.write(nome_arquivo)
-            time.sleep(2)
+    #         # pyautogui.click('img/Salvar_Arquivo/NomeDocumento.png')
+    #         Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Elemento 'Nome do Documento'")
+    #         time.sleep(2)
+    #         pyautogui.write(nome_arquivo)
+    #         time.sleep(2)
 
-            # pyautogui.click('img/Salvar_Arquivo/BotaoSalvar.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Icone 'Botão Salvar'")
-            time.sleep(5)
+    #         # pyautogui.click('img/Salvar_Arquivo/BotaoSalvar.png')
+    #         Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Icone 'Botão Salvar'")
+    #         time.sleep(5)
 
-            # pyautogui.click('img/Salvar_Arquivo/NaoAbrirArquivo.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/NaoAbrirArquivo.png', "Botão 'Não/Ok'")
-            time.sleep(5)
+    #         # pyautogui.click('img/Salvar_Arquivo/NaoAbrirArquivo.png')
+    #         Utils.clicar_elemento('img/Salvar_Arquivo/NaoAbrirArquivo.png', "Botão 'Não/Ok'")
+    #         time.sleep(5)
 
-        except FileNotFoundError:
-            messagebox.showerror("Erro", "Arquivo de configurações não encontrado.")
-        except Exception as e:
-            print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao salvar o arquivo: {e}")
+    #     except FileNotFoundError:
+    #         messagebox.showerror("Erro", "Arquivo de configurações não encontrado.")
+    #     except Exception as e:
+    #         print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao salvar o arquivo: {e}")
 
     @staticmethod
     def salvar_arquivo_mov_saida_odf(nome_arquivo):
@@ -343,11 +346,11 @@ class Utils:
                     caminho_mov_saida_odf = quarta_linha[3].strip() 
                 else:
                     # Caso o arquivo tenha menos de duas linhas
-                    print("O arquivo não tem pelo menos tres linhas.")
+                    print("O arquivo configuracoes_caminhos.txt não tem pelo menos tres linhas.")
 
             # Simulação de operações de salvar arquivo usando pyautogui (adapte conforme necessário)
             # pyautogui.click('img/Salvar_Arquivo/ExportarExcel.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/ExportarExcel.png', "Icone 'Exportar Excel'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/ExportarTXT.png', "Icone 'Exportar TXT'")
             time.sleep(5)
             
             # pyautogui.click('img/Salvar_Arquivo/EsteComputador.png')
@@ -355,20 +358,20 @@ class Utils:
             time.sleep(5)
             
             # pyautogui.click('img/Salvar_Arquivo/EsteComputador_Pesquisa.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador Pesquisa'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/AreaDeTrabalho_Pesquisa.png', "Icone 'Este Computador - Barra de Pesquisa'")
             time.sleep(2)
             pyautogui.write(caminho_mov_saida_odf)
             pyautogui.press('enter')
             time.sleep(5)
 
             # pyautogui.click('img/Salvar_Arquivo/NomeDocumento.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Elemento 'Nome do Documento'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/NomeDocumento.png', "Campo 'Nome do Documento'")
             time.sleep(2)
             pyautogui.write(nome_arquivo)
             time.sleep(2)
 
             # pyautogui.click('img/Salvar_Arquivo/BotaoSalvar.png')
-            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Icone 'Botão Salvar'")
+            Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Botão 'Salvar'")
             time.sleep(5)
 
             # pyautogui.click('img/Salvar_Arquivo/NaoAbrirArquivo.png')
@@ -379,4 +382,5 @@ class Utils:
             messagebox.showerror("Erro", "Arquivo de configurações não encontrado.")
         except Exception as e:
             print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Ocorreu um erro ao salvar o arquivo: {e}")
+            raise
 
