@@ -26,12 +26,12 @@ Este projeto é um sistema para extração de relatórios utilizando Tkinter par
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/sistema-extracao-relatorios.git
+   git clone https://github.com/VictorVOLucas/Automacao_Relatorios_Por_Foto.git
 Navegue até o diretório do projeto:
 
 bash
 Copiar código
-cd sistema-extracao-relatorios
+cd Automacao_Relatorios_Por_Foto
 Crie um ambiente virtual e ative-o:
 
 bash
