@@ -7,10 +7,10 @@ class EnviarLogs:
 
     def __init__(self):
         # Substitua 'YOUR_TOKEN' pelo token do seu bot do Telegram
-        self.TOKEN = '7460964482:AAEOWjVUfAhsA-8WBxAitXErNN4FL3TJZvQ'
+        self.TOKEN = ''
         
         # Substitua 'CHAT_ID' pelo ID do chat onde você quer enviar o arquivo
-        self.CHAT_ID = '-4271575797'
+        self.CHAT_ID = ''
         
         # Caminho para a pasta que contém os arquivos TXT
         self.FOLDER_PATH = 'Logs'
