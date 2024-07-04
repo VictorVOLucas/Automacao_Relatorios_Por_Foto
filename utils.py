@@ -34,10 +34,10 @@ class Utils:
         parent.caminho_parametros_entry = tk.Entry(parent, width=50)
         parent.caminho_parametros_entry.pack(pady=5)
 
-         # Entrada para os argumentos
-        tk.Label(parent, text="Informe o caminho para salvar o Relatorio Pedido de Compra:").pack(pady=5)
-        parent.caminho_pedido_compra_entry = tk.Entry(parent, width=50)
-        parent.caminho_pedido_compra_entry.pack(pady=5)
+        #  # Entrada para os argumentos
+        # tk.Label(parent, text="Informe o caminho para salvar o Relatorio Pedido de Compra:").pack(pady=5)
+        # parent.caminho_pedido_compra_entry = tk.Entry(parent, width=50)
+        # parent.caminho_pedido_compra_entry.pack(pady=5)
 
          # Entrada para os argumentos
         tk.Label(parent, text="Informe o caminho para salvar o Relatorio Movimento Saida de ODF:").pack(pady=5)
@@ -49,11 +49,11 @@ class Utils:
         try:
             with open('configuracoes_caminhos.txt', 'r') as f:
                 lines = f.readlines()
-                if len(lines) >= 4:
+                if len(lines) >= 3:
                     parent.caminho_entry.insert(0, lines[0].strip())
                     parent.caminho_parametros_entry.insert(0, lines[1].strip())
-                    parent.caminho_pedido_compra_entry.insert(0, lines[2].strip())
-                    parent.caminho_mov_odf_entry.insert(0, lines[3].strip())
+                    # parent.caminho_pedido_compra_entry.insert(0, lines[2].strip())
+                    parent.caminho_mov_odf_entry.insert(0, lines[2].strip())
 
         except FileNotFoundError:
             messagebox.showwarning("Aviso", "Arquivo de configurações não encontrado.")
@@ -62,7 +62,7 @@ class Utils:
     def salvar_caminho_relatorios(parent):
         caminho = parent.caminho_entry.get()
         caminho_parametros = parent.caminho_parametros_entry.get()
-        caminho_pedido_compra = parent.caminho_pedido_compra_entry.get()
+        # caminho_pedido_compra = parent.caminho_pedido_compra_entry.get()
         caminho_mov_odf = parent.caminho_mov_odf_entry.get()
 
         # Salvar o caminho e os argumentos em um arquivo de texto
@@ -70,7 +70,7 @@ class Utils:
             with open('configuracoes_caminhos.txt', 'w') as f:
                 f.write(f"{caminho}\n")
                 f.write(f"{caminho_parametros}\n")
-                f.write(f"{caminho_pedido_compra}\n")
+                # f.write(f"{caminho_pedido_compra}\n")
                 f.write(caminho_mov_odf)
             messagebox.showinfo("Sucesso", "Caminho do software, argumentos e relatorios salvos com sucesso.")
         except Exception as e:
@@ -143,11 +143,11 @@ class Utils:
 
             # pyautogui.click('img/Salvar_Arquivo/BotaoSalvar.png')
             Utils.clicar_elemento('img/Salvar_Arquivo/BotaoSalvar.png', "Botão 'Salvar'")
-            time.sleep(5)
+            time.sleep(30)
 
             # pyautogui.click('img/Salvar_Arquivo/NaoAbrirArquivo.png')
             Utils.clicar_elemento('img/Salvar_Arquivo/NaoAbrirArquivo.png', "Botão 'Não/Ok'")
-            time.sleep(5)
+            time.sleep(10)
 
         except FileNotFoundError:
             messagebox.showerror("Erro", "Arquivo de configurações não encontrado.")

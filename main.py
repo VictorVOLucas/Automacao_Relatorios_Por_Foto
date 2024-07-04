@@ -12,6 +12,7 @@ import os  # Módulo para interagir com o sistema operacional
 import sys  # Módulo para interagir com o interpretador Python
 #import telegram  # Biblioteca para interagir com a API do Telegram
 from Enviar_Log import EnviarLogs  # Importa a classe EnviarLogs do arquivo Logs.py
+from PIL import Image, ImageTk
 
 class MainApp:
     def __init__(self, root):
@@ -19,8 +20,11 @@ class MainApp:
         self.root.title("Sistema de Extração de Relatórios")  # Define o título da janela principal
         self.root.geometry("850x700")  # Define o tamanho da janela
 
-        self.create_widgets()  # Cria os widgets da interface
+         # Carrega a imagem do ícone
+        icon = ImageTk.PhotoImage(file='Icones/LogoSupper.png')
+        self.root.iconphoto(False, icon)  # Define o ícone da janela
 
+        self.create_widgets()  # Cria os widgets da interface
         self.is_running = False  # Flag para indicar se o agendamento está ativo
         self.load_schedule()  # Carrega agendamentos salvos
 
@@ -143,6 +147,8 @@ class MainApp:
 
             self.log("Fechando o Sistema...")
             RoboV4.fechar_sistema()  # Certifica-se de que o sistema será fechado
+
+            self.log("Relatorios extraidos com sucesso !.")  # Loga a mensagem de finalização
 
             #self.log("Abrindo Pipefy e Retirando o Relatorio...")
             #RoboPipefy.main()

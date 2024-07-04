@@ -1,35 +1,97 @@
-# Automação de Extração de Relatórios
+# Sistema de Extração de Relatórios
 
-Este projeto visa automatizar a extração de relatórios de um software específico usando Python e automação de interface gráfica.
+Este projeto é um sistema para extração de relatórios utilizando Tkinter para a interface gráfica. O sistema permite agendar e executar tarefas de extração de relatórios de forma automática e manual.
 
-## Pré-requisitos
+## Estrutura do Projeto
 
-- Python 3.12.4 instalado
-- Bibliotecas Python necessárias (instaláveis via `pip install <nome_da_biblioteca>`):
-  - pyautogui
-  - schedule
+- `main.py`: Arquivo principal que inicializa a aplicação Tkinter.
+- `RoboV4.py`: Contém a lógica principal do robô de extração de relatórios.
+- `Enviar_Log.py`: Script responsável pelo envio de logs.
+- `utils.py`: Contém funções utilitárias usadas em vários pontos do projeto.
 
-## Configuração
+## Funcionalidades
 
-1. Clone o repositório para o seu ambiente local:
+- **Agendamento de Tarefas**: Permite agendar a extração de relatórios para horários específicos.
+- **Execução Manual**: Possibilidade de executar a extração de relatórios manualmente.
+- **Logs**: Geração e envio de logs para monitoramento e debug.
+
+## Instalação
+
+### Pré-requisitos
+
+- Python 3.x
+- Bibliotecas necessárias listadas no `requirements.txt`
+
+### Passos para Instalação
+
+1. Clone o repositório:
    ```bash
-   git clone https://github.com/VictorVOLucas/Robo_Relatorio_KORP.git
-   cd Robo_Relatorio_KORP
+   git clone https://github.com/seu-usuario/sistema-extracao-relatorios.git
+Navegue até o diretório do projeto:
 
-# Funcionamento do Código
+bash
+Copiar código
+cd sistema-extracao-relatorios
+Crie um ambiente virtual e ative-o:
 
-## Estrutura de Arquivos
+bash
+Copiar código
+python -m venv venv
+source venv/bin/activate  # Para Linux/Mac
+.\venv\Scripts\activate  # Para Windows
+Instale as dependências:
 
-- Main.py: Arquivo principal que inicia o processo de automação.
-- RoboV4.py: Contém a classe RoboV4 com métodos para interagir com o software específico.
-- RoboPipefy.py: Integração com o Pipefy, seção não detalhada neste exemplo.
-- Utils.py: Funções utilitárias para interagir com a interface gráfica usando pyautogui.
-- img/: Diretório contendo imagens utilizadas para localizar elementos na interface gráfica.
+bash
+Copiar código
+pip install -r requirements.txt
+Execute a aplicação:
 
-## Agendamento de Extração
+bash
+Copiar código
+python main.py
+Uso
+Interface Gráfica
+A aplicação possui uma interface gráfica feita com Tkinter, onde você pode:
 
-O script utiliza a biblioteca schedule para agendar a extração dos relatórios em três horários diferentes durante o dia (9h, 12h e 15h). Para isso, a função extrair_relatorios() é chamada nos horários especificados todos os dias. Além disso, o relatório de parâmetros é extraído toda segunda-feira.
+Agendar novas tarefas de extração.
+Executar a extração manualmente.
+Visualizar logs e status das execuções.
+Alterar Ícone da Janela
+Para alterar o ícone da janela, certifique-se de ter um arquivo de ícone (.ico ou .png) e ajuste o caminho no main.py:
 
-## Notas Importantes
-Certifique-se de que as imagens utilizadas (*.png) em Utils.py estão atualizadas e correspondem aos elementos visuais da interface do software.
-Ajuste os caminhos de arquivos e outras configurações específicas conforme necessário para o seu ambiente de automação.
+python
+Copiar código
+# No arquivo main.py
+icon = ImageTk.PhotoImage(file='caminho/para/seu/icone.png')
+self.root.iconphoto(False, icon)
+Criar Executável
+Para criar um executável do seu projeto, utilize o PyInstaller:
+
+Instale o PyInstaller:
+
+bash
+Copiar código
+pip install pyinstaller
+Crie o executável:
+
+bash
+Copiar código
+pyinstaller --onefile --windowed --icon=caminho/para/seu/icone.ico main.py
+O executável será gerado no diretório dist.
+
+Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
+
+Licença
+Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
+
+markdown
+Copiar código
+
+### Observações
+
+1. **Certifique-se de ajustar os caminhos dos ícones** no `main.py` conforme necessário.
+2. **Inclua um arquivo `requirements.txt`** com todas as dependências necessárias.
+3. **Verifique se há um arquivo de licença** e inclua o tipo de licença no README.
+
+Se precisar de mais alguma coisa ou de ajustes específicos, me avise!
