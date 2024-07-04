@@ -93,5 +93,3 @@ Copiar código
 1. **Certifique-se de ajustar os caminhos dos ícones** no `main.py` conforme necessário.
 2. **Inclua um arquivo `requirements.txt`** com todas as dependências necessárias.
 3. **Verifique se há um arquivo de licença** e inclua o tipo de licença no README.
-
-Se precisar de mais alguma coisa ou de ajustes específicos, me avise!
