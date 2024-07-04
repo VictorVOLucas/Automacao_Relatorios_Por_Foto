@@ -9,8 +9,8 @@ from datetime import datetime
 
 class RoboV4:
 
-    USUARIO_BOT = 'BOT_Relatorio_Supper'
-    SENHA_BOT = '210624'
+    USUARIO_BOT = ''
+    SENHA_BOT = ''
 
     now = datetime.now()
 
